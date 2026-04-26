@@ -1,0 +1,47 @@
+name: nginx
+version: "1.0"
+apk_package: nginx
+description: Post-install setup for nginx on Foxi Linux
+
+hooks:
+  post-install:
+    - action: add_group
+      args:
+        name: nginx
+        system: true
+    - action: add_user
+      args:
+        name: nginx
+        group: nginx
+        system: true
+        no_home: true
+        shell: /sbin/nologin
+        gecos: "nginx web server"
+    - action: mkdir
+      args:
+        path: /var/log/nginx
+        mode: "0750"
+    - action: mkdir
+      args:
+        path: /var/lib/nginx
+        mode: "0750"
+    - action: mkdir
+      args:
+        path: /var/lib/nginx/tmp
+        mode: "0750"
+    - action: chown
+      args:
+        path: /var/log/nginx
+        owner: nginx
+        group: nginx
+    - action: chown
+      args:
+        path: /var/lib/nginx
+        owner: nginx
+        group: nginx
+        recursive: true
+
+  pre-remove:
+    - action: run
+      args:
+        cmd: "rc-service nginx stop 2>/dev/null || true"

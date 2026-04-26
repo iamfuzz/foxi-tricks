@@ -1,0 +1,10 @@
+{
+  "updated": "2026-04-26",
+  "tricks": {
+    "nginx": {
+      "version": "1.0",
+      "description": "Post-install setup for nginx on Foxi Linux",
+      "sha256": "ec7f7f3e29393754a1d562e61b41ae65e4d5fef9ced18f49d63658c4c165c4f5"
+    }
+  }
+}
