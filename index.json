@@ -1,10 +1,10 @@
 {
   "updated": "2026-04-26",
   "tricks": {
-    "nginx": {
+    "nginx-mainline": {
       "version": "1.2",
-      "description": "Post-install setup for nginx on Foxi Linux",
-      "sha256": "a24d47a124673d63e38557d00f5d04f57614af9aff40a3032531052770df8604"
+      "description": "Post-install setup for nginx-mainline on Foxi Linux",
+      "sha256": "f5f7bcfe9df8276631e45228d9951834dcb5b62b5feeab75693d827c01320d7d"
     }
   }
 }
