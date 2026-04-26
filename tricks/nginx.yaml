@@ -1,5 +1,5 @@
 name: nginx
-version: "1.0"
+version: "1.1"
 apk_package: nginx
 description: Post-install setup for nginx on Foxi Linux
 
@@ -40,8 +40,31 @@ hooks:
         owner: nginx
         group: nginx
         recursive: true
+    - action: mkdir
+      args:
+        path: /usr/share/nginx/html
+        mode: "0755"
+    - action: write_file
+      args:
+        path: /usr/share/nginx/html/index.html
+        overwrite: false
+        content: |
+          <!DOCTYPE html>
+          <html>
+            <head><title>Foxi Linux</title></head>
+            <body><h1>Hello from Foxi Linux</h1></body>
+          </html>
+    - action: run
+      args:
+        cmd: "rc-update add nginx default"
+    - action: run
+      args:
+        cmd: "rc-service nginx start"
 
   pre-remove:
     - action: run
       args:
         cmd: "rc-service nginx stop 2>/dev/null || true"
+    - action: run
+      args:
+        cmd: "rc-update del nginx default 2>/dev/null || true"
