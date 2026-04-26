@@ -1,5 +1,5 @@
 name: nginx
-version: "1.1"
+version: "1.2"
 apk_package: nginx
 description: Post-install setup for nginx on Foxi Linux
 
@@ -42,11 +42,11 @@ hooks:
         recursive: true
     - action: mkdir
       args:
-        path: /usr/share/nginx/html
+        path: /var/lib/nginx/html
         mode: "0755"
     - action: write_file
       args:
-        path: /usr/share/nginx/html/index.html
+        path: /var/lib/nginx/html/index.html
         overwrite: false
         content: |
           <!DOCTYPE html>
